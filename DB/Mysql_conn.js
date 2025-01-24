@@ -6,7 +6,7 @@ let connection;
 const handleConnection = () => {
     connection = mysql.createConnection({
         host: process.env.HOST,
-        user: process.env.USER,
+        user: process.env.User,
         password: process.env.PASSWORD,
         database: process.env.DATABASE_NAME,
         multipleStatements: true,
