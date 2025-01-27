@@ -24,8 +24,11 @@ const AddProduct = (req, res) => {
     try {
         const { name, description, price, stock, categoryId } = req.body;
 
-        const mainImage = req.file ? req.file.path : null; 
-        const images = req.files ? req.files.map(file => file.path) : []; 
+        const mainImage = req.files.mainImage ? req.files.mainImage[0].path : null;
+        const images = req.files.images ? req.files.images.map(file => file.path) : [];
+
+        console.log('Main Image:', mainImage);
+        console.log('Additional Images:', images);
 
         if (!mainImage) {
             return res.status(400).send({ message: 'Main image is required' });
@@ -39,7 +42,7 @@ const AddProduct = (req, res) => {
         connections.query(query, [name, description, price, stock, mainImage, categoryId, imagesJSON], (err, results) => {
             if (err) {
                 console.error('Database Error:', err);
-                return res.status(500).send({ message: 'Error adding product' });
+                return res.status(500).send({ message: 'Error adding product', error: err.message });
             }
 
             const productId = results[0]?.[0]?.productId;
@@ -50,5 +53,6 @@ const AddProduct = (req, res) => {
         res.status(500).send({ message: 'Unexpected error occurred', error: err.message });
     }
 };
+
 
 module.exports = { AddProduct, upload };

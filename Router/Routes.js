@@ -29,7 +29,11 @@ const getEightProduct = require('../Controller/GetApi/GetEightPrduct.js');
 //#region POST APIs For E-Commerce
 Router.post('/create-user', CreateUser); 
 Router.post('/user-login', handleUserLogin); 
-Router.post('/add-product', upload.single('mainImage'), upload.array('images'), AddProduct);
+Router.post(
+    '/add-product', 
+    upload.fields([{ name: 'mainImage', maxCount: 1 }, { name: 'images', maxCount: 10 }]), 
+    AddProduct
+);
 Router.post('/add-to-cart', addCartItem);
 Router.post('/remove-item', removeCartItem);
 Router.post('/add-order', productOrder);
