@@ -13,7 +13,6 @@ const corsOrigins = [
   "https://6797979f711d8600086e1e37--onlineshopiing.netlify.app",
 ];
 
-
 const corsOptions = {
   origin: (origin, callback) => {
       if (!origin || corsOrigins.includes(origin)) {
