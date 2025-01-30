@@ -8,7 +8,7 @@ const path = require('path');
 dotenv.config({ path: "./.env" });
 
 const corsOrigins = [
-  "https://onlineshopiing.netlify.app",
+  "https://onlineshopiing.netlify.app/",
    "http://localhost:5173",
   "https://6797979f711d8600086e1e37--onlineshopiing.netlify.app",
 ];
