@@ -53,7 +53,6 @@ app.use((err, req, res, next) => {
     res.status(500).send({ message: 'An error occurred!', error: err.message });
 });
 
-
 app.listen(app.get('port'), () => {
     console.info(`Server listening on port ${app.get('port')}`);
 });
