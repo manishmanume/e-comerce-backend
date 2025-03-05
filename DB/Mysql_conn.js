@@ -21,6 +21,7 @@ const handleConnection = () => {
         }
     });
 
+    
     connection.on('error', (err) => {
         console.error('Database error:', err);
         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
